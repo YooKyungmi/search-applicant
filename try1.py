@@ -12,22 +12,26 @@ query = ["java and backend and junior and pizza 100",
          "- and - and - and chicken 100",
          "- and - and - and - 150"]
 
-count = 0
-requ = query[4].replace("and", "").replace("  ", " ")
-requ = requ.split(' ')
-r_score = requ[4]
-location = [4]
-for i in range(3, -1, -1):
-    if requ[i] == "-":
-        location.append(i)
-for j in location:
-    del requ[j]
-requ = " ".join(requ)
+answer = []
+querysplit = []
+for i in range(len(query)):
+    q = query[i].replace("and", "").replace("  ", " ").split()
+    querysplit.append(q)
+    count = 0
+    requ = query[4].replace("and", "").replace("  ", " ")
+    requ = requ.split(' ')
+    r_score = requ[4]
+    location = [4]
+    for i in range(3, -1, -1):
+        if requ[i] == "-":
+            location.append(i)
+    for j in location:
+        del requ[j]
+    requ = " ".join(requ)
 
-
-for i in range(len(info)):
-    check = info[i].split(' ')
-    if check[4] > r_score:
+    for i in range(len(info)):
+        check = info[i].split(' ')
+    if check[4] >= r_score:
         for k in location:
             del check[k]
         check = " ".join(check)
